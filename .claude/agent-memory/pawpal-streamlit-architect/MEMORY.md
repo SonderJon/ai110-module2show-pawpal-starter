@@ -1,0 +1,1 @@
+- [PawPal+ project build state](project_pawpal_state.md) — class skeletons exist, all methods are stubs, app.py is not wired to pawpal_system.py

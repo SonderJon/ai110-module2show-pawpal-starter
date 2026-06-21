@@ -1,4 +1,5 @@
 import streamlit as st
+from pawpal_system import Task
 
 st.set_page_config(page_title="PawPal+", page_icon="🐾", layout="centered")
 
@@ -43,6 +44,9 @@ owner_name = st.text_input("Owner name", value="Jordan")
 pet_name = st.text_input("Pet name", value="Mochi")
 species = st.selectbox("Species", ["dog", "cat", "other"])
 
+# Persist pet identity so the add-task handler can scope tasks to the current pet.
+st.session_state.pet_name = pet_name
+
 st.markdown("### Tasks")
 st.caption("Add a few tasks. In your final version, these should feed into your scheduler.")
 
@@ -59,7 +63,13 @@ with col3:
 
 if st.button("Add task"):
     st.session_state.tasks.append(
-        {"title": task_title, "duration_minutes": int(duration), "priority": priority}
+        Task(
+            title=task_title,
+            description="",
+            priority=priority,
+            duration_minutes=int(duration),
+            pet_id=st.session_state.get("pet_name"),
+        )
     )
 
 if st.session_state.tasks:

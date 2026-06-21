@@ -6,10 +6,11 @@ from dataclasses import dataclass, field
 class Task:
     title: str
     description: str
-    priority: int
+    priority: str  # one of "low", "medium", "high"
     duration_minutes: int
     is_completed: bool = False
     task_id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    pet_id: str | None = None  # scopes the task to a specific Pet; None means unassigned
 
     def mark_complete(self) -> None:
         # TODO: implement

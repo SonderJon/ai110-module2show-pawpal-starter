@@ -6,11 +6,15 @@
 
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
+The initial UML features 4 classes (Owner, Pet, Task, and Schedule). Pet and Task are intended primarily for holding data to be used by the Owner class, such as managing pets and the pet's tasks.
+Schedule organizes a pet's tasks and creates an ideal schedule based on the tasks.
 
 **b. Design changes**
 
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
+Yes, design changed.
+The AI identified multiple mismatching data types (such as app.py using task priority as str but the Task class had priority as int) and missing methods
 
 ---
 
