@@ -1,15 +1,51 @@
-classDiagram
-    %% Replace the placeholders below with your actual classes, attributes, methods, and relationships.
-    %% Keep this file updated so it matches your final implementation.
+    classDiagram
+        class Owner {
+            +string owner_id
+            +string name
+            +list~Pet~ pets
+            +add_pet(pet: Pet) None
+            +remove_pet(pet_id: string) None
+            +get_pets() list~Pet~
+        }
 
-    class ClassName {
-        +type attribute
-        +method() returnType
-    }
+        class Pet {
+            +string pet_id
+            +string name
+            +string species
+            +int age_years
+            +list~Task~ task_list
+            +add_task(task: Task) None
+            +remove_task(task_id: string) None
+            +get_tasks_by_priority() list~Task~
+            +get_pending_tasks() list~Task~
+        }
 
-    class AnotherClass {
-        +type attribute
-        +method() returnType
-    }
+        class Task {
+            +string task_id
+            +string title
+            +string description
+            +int priority
+            +int duration_minutes
+            +bool is_completed
+            +mark_complete() None
+            +mark_incomplete() None
+        }
 
-    ClassName --> AnotherClass : relationship
+        class Schedule {
+            +string schedule_id
+            +Pet pet
+            +list~Task~ ordered_tasks
+            +string reasoning
+            +bool is_published
+            +generate(tasks: list~Task~) None
+            +sort_by_duration() None
+            +sort_by_priority() None
+            +get_total_duration() int
+            +get_summary() string
+            +explain_reasoning() string
+        }
+
+        Owner "1" --> "1..*" Pet : owns
+        Pet "1" --> "0..*" Task : has task list
+        Schedule "1" --> "1" Pet : generated for
+        Schedule "1" --> "1..*" Task : contains ordered
