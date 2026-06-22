@@ -16,7 +16,6 @@
             +list~Task~ task_list
             +add_task(task: Task) None
             +remove_task(task_id: string) None
-            +get_tasks_by_priority() list~Task~
             +get_pending_tasks() list~Task~
         }
 
@@ -24,7 +23,7 @@
             +string task_id
             +string title
             +string description
-            +int priority
+            +str priority
             +int duration_minutes
             +bool is_completed
             +mark_complete() None
@@ -36,8 +35,7 @@
             +Pet pet
             +list~Task~ ordered_tasks
             +string reasoning
-            +bool is_published
-            +generate(tasks: list~Task~) None
+            +generate() None
             +sort_by_duration() None
             +sort_by_priority() None
             +get_total_duration() int

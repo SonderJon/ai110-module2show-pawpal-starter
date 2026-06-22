@@ -1,1 +1,2 @@
 - [PawPal+ project build state](project_pawpal_state.md) — class skeletons exist, all methods are stubs, app.py is not wired to pawpal_system.py
+- [Testing framework preference](feedback_testing_framework.md) — always use pytest plain functions, never unittest.TestCase
